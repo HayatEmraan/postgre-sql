@@ -1,121 +1,67 @@
 1. What is PostgreSQL?
 
    ```bash
-    TypeScript is JavaScript with syntax for types. TypeScript is superset of TypeScript, Which means Using TypeScript you'll get full advantages of JavaScript also it's type safe helps developer from make mistake in development environment.
+    PostgreSQL is open-source relational relational database management system (RDBMS)
    ```
 
 2. What is the purpose of a database schema in PostgreSQL?
 
    ```bash
-    Optional chaining (?) is used for handle error. It's used when you're accessing nested undefined properties from an Object.
-
-    const person = {
-        name: "John",
-        age: 18,
-        address: {
-            city: "Dhaka",
-            country: "Bangladesh",
-        }
-    }
-    
-    const accessStreet = person.address.street.zipCode // accessing properties without Optional chaining (?) will throw an error. Use instead  of person?.address?.street?.zipCode
-
-    nullish coalescing (??) work with "null or undefined". 
-
-    const loggedIn = null;
-    const user = loggedIn ?? "Guest";
+    A schema in PostgreSQL serves as a logical container within a database, acting as a namespace for organizing database objects like tables, views, functions, and more.
    ```
 
 3. Explain the primary key and foreign key concepts.
 
    ```bash
-    Promises are a cleaner way to handle asynchronous code that allows for chaining . then() and . catch() methods, while Async/await provides a more procedural syntax that makes asynchronous code look similar to synchronous code, with better error handling capabilities.
+    Primary Key and Foreign Key use for connecting relation between two database's table. Primary Key refers to it's table unique column in other hand Foreign Key column refers to different table's Primary Key column.
    ```
 
 4. What is the difference between the VARCHAR and CHAR data types?
 
    ```bash
-    Enums is likes a options. You'll have choose between enums values. An enum is special class. Enums come in two flavors "string" and "number". It's uses advantages is choosing right options.
+    VARCHAR and CHAR data types are commonly used for SQL string types data. If VARCHAR data type length set to 50 that means if you set any values that less then data types length then it'll never add extra padding that CHAR type does.
    ```
 
 5. Explain the purpose of the WHERE clause in a SELECT statement.
 
    ```bash
-    In TypeScript type guards checks data type on run time. Which means by default TS not know about the initial data types. But When you run the program, It'll detect & adjust with your requirements.
-
-    const checkType = (value: string | number | boolean): string =>{
-        if(typeof value === "string") {
-            return "This is string type";
-        } else if(typeof value === "number") {
-            return "This is number type";
-        } else if(typeof value === "boolean"){
-            return "This is boolean type";
-        } else {
-            return "Please, provide string, number or boolean";
-        }
-    }
+    In postgreSQL WHERE clause used for filtering data from database at retrieving time. 
    ```
 
 6. What are the LIMIT and OFFSET clauses used for?
 
    ```bash
-    In TypeScript 'readonly" acts as constant value. It can be access but can't reassign it's value.
-
-    const person: {
-      readonly name: string;
-      age: number;
-      gender: string;
-    } = {
-      name: "John",
-      age: 30,
-      gender: "male",
-    };
+    Commonly LIMIT and OFFSET clauses used for pagination time. also LIMIT can be used for retrieving limited data from database table. OFFSET can be used for skip data from database at retrieving time.
    ```
 
 7. How can you perform data modification using UPDATE statements?
 
    ```bash
-    Within TypeScript union behave as like JavaScript "OR - ||" operator. If you've (string || number in JS or string | number in TS), Which means you can pass "string or number" type. It's uses when you know parameter maybe "string or number".
-
-    type HasWiFi = string | boolean;
+    UPDATE table_name (Which table you wanna update) SET column_name (Which column you wanna update) = new_column_value WHERE condition (specific row for update);
    ```
 
 8. What is the significance of the JOIN operation, and how does it work in PostgreSQL?
 
    ```bash
-    Within TypeScript union behave as like JavaScript "OR - ||" operator. If you've (string || number in JS or string | number in TS), Which means you can pass "string or number" type. It's uses when you know parameter maybe "string or number".
-
-    type HasWiFi = string | boolean;
+    PostgreSQL join is used to combine columns from one (self-join) or more tables based on the values of the common columns between related tables.
    ```
 
 9. Explain the GROUP BY clause and its role in aggregation operations.
 
    ```bash
-    Within TypeScript union behave as like JavaScript "OR - ||" operator. If you've (string || number in JS or string | number in TS), Which means you can pass "string or number" type. It's uses when you know parameter maybe "string or number".
-
-    type HasWiFi = string | boolean;
+   In aggregation operations GROUP BY clause used for grouping specific column by providing condition;
    ```
 
 10. How can you calculate aggregate functions like COUNT, SUM, and AVG in PostgreSQL?
 
    ```bash
-    Within TypeScript union behave as like JavaScript "OR - ||" operator. If you've (string || number in JS or string | number in TS), Which means you can pass "string or number" type. It's uses when you know parameter maybe "string or number".
-
-    type HasWiFi = string | boolean;
+   SELECT COUNT(*) FROM Products; 
+   SELECT SUM(salary) FROM Products; 
+   SELECT AVG(salary) FROM Products; 
    ```
 
 11. What is the purpose of an index in PostgreSQL, and how does it optimize query performance?
 
    ```bash
-    Within TypeScript union behave as like JavaScript "OR - ||" operator. If you've (string || number in JS or string | number in TS), Which means you can pass "string or number" type. It's uses when you know parameter maybe "string or number".
-
-    type HasWiFi = string | boolean;
-   ```
-
-12. Explain the concept of a PostgreSQL view and how it differs from a table.
-
-   ```bash
-    Within TypeScript union behave as like JavaScript "OR - ||" operator. If you've (string || number in JS or string | number in TS), Which means you can pass "string or number" type. It's uses when you know parameter maybe "string or number".
-
-    type HasWiFi = string | boolean;
+    Indexes are a common way to enhance database performance. An index allows the database server to find and retrieve specific rows much faster than it could do without an index.
    ```

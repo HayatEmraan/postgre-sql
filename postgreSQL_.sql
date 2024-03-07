@@ -8,14 +8,8 @@ CREATE TABLE departments (
 
 -- create employees table table using company_db
 
-CREATE TABLE employees(
-    employee_id SERIAL PRIMARY KEY,
-    employee_name VARCHAR(50),
-    age INTEGER,
-    email VARCHAR(50),
-    department_id INTEGER REFERENCES departments(department_id),
-    salary INTEGER,
-    status VARCHAR(50)
+CREATE TABLE employees (
+    employee_id SERIAL PRIMARY KEY, employee_name VARCHAR(50), age INTEGER, email VARCHAR(50), department_id INTEGER REFERENCES departments (department_id), salary INTEGER, status VARCHAR(50)
 );
 
 -- insert data into table using company_db
@@ -91,13 +85,11 @@ VALUES (
         'Taylor', 31, 'taylor@yahoo.com', 3, 58000, NULL
     );
 
-
 --  retrieve data from table
 
 SELECT * FROM employees;
 
 SELECT * FROM departments;
-
 
 -- Query 1: Retrieve all employees with a salary greater than 60000
 
@@ -105,24 +97,40 @@ SELECT * FROM employees WHERE salary > 60000;
 
 -- Query 2: Retrieve the names of employees using a limit of 2, starting from the 3rd employee.
 
+SELECT employee_name FROM employees LIMIT 2 OFFSET 2;
 
--- Query 3: Calculate and display the average age of all employees. 
+-- Query 3: Calculate and display the average age of all employees.
 
 SELECT AVG(age) FROM employees;
 
-
 -- Query 4: Retrieve the names of employees whose email addresses contain 'example.com', 'example.net', or 'google.com'.
 
+SELECT employee_name
+FROM employees
+WHERE
+    email LIKE '%@example.com'
+    OR email LIKE '%@example.net'
+    OR email LIKE '%@google.com';
 
 -- Query 5: Retrieve the names of all employees who belong to the department titled 'Engineering'.
-
-
-SELECT employee_name, department_name FROM employees INNER JOIN departments USING (department_id) GROUP BY department_name = 'Engineering';
-
+SELECT employee_name, department_name
+FROM employees
+    INNER JOIN departments USING (department_id) GROUP BY employee_name, department_name HAVING department_name = 'Engineering';
 
 -- Query 6: Update the status of the employee with the highest salary to 'Promoted'
-
+UPDATE employees
+SET
+    status = 'Promoted'
+WHERE
+    salary = (
+        SELECT MAX(salary)
+        FROM employees
+    );
 
 -- Query 7: Retrieve the department name and the average salary of employees in each department:
 
-SELECT department_name, AVG(salary) FROM employees INNER JOIN departments USING(department_id) GROUP BY department_name;
+SELECT department_name, AVG(salary)
+FROM employees
+    INNER JOIN departments USING (department_id)
+GROUP BY
+    department_name;
